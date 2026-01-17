@@ -67,7 +67,24 @@ function PushNotificationManager() {
   }
  
   if (!isSupported) {
-    return <p>Push notifications are not supported in this browser.</p>
+    return   <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      zIndex: 9999,
+      backgroundColor: "#fee2e2",
+      color: "#991b1b",
+      padding: "10px 16px",
+      textAlign: "center",
+      fontSize: "14px",
+      fontWeight: 500,
+    }}
+  >
+    Push notifications are not supported in this browser.
+  </div>
+
   }
  return (
   <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4">
