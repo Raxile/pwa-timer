@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #02020d;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,85 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Orb floats */
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(50px, -70px) scale(1.08); }
+  66%       { transform: translate(-30px, 40px) scale(0.95); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-60px, 50px) scale(1.06); }
+  66%       { transform: translate(40px, -40px) scale(1.04); }
+}
+@keyframes float-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-40px, -50px) scale(0.92); }
+}
+
+.orb-1 { animation: float-1 14s ease-in-out infinite; }
+.orb-2 { animation: float-2 17s ease-in-out infinite; }
+.orb-4 { animation: float-4 20s ease-in-out infinite; }
+
+/* Cloud drifts */
+@keyframes cloud-a {
+  0%   { transform: translateX(0)    translateY(0); opacity: 0.55; }
+  40%  { transform: translateX(60px) translateY(-12px); opacity: 0.70; }
+  100% { transform: translateX(0)    translateY(0); opacity: 0.55; }
+}
+@keyframes cloud-b {
+  0%   { transform: translateX(0)    translateY(0); opacity: 0.40; }
+  50%  { transform: translateX(-80px) translateY(16px); opacity: 0.60; }
+  100% { transform: translateX(0)    translateY(0); opacity: 0.40; }
+}
+@keyframes cloud-c {
+  0%   { transform: translateX(0) translateY(0) scaleX(1); opacity: 0.30; }
+  50%  { transform: translateX(50px) translateY(-8px) scaleX(1.1); opacity: 0.50; }
+  100% { transform: translateX(0) translateY(0) scaleX(1); opacity: 0.30; }
+}
+@keyframes cloud-d {
+  0%   { transform: translateX(0) translateY(0); opacity: 0.25; }
+  60%  { transform: translateX(-40px) translateY(20px); opacity: 0.45; }
+  100% { transform: translateX(0) translateY(0); opacity: 0.25; }
+}
+
+.cloud-a { animation: cloud-a 22s ease-in-out infinite; }
+.cloud-b { animation: cloud-b 28s ease-in-out infinite; }
+.cloud-c { animation: cloud-c 18s ease-in-out infinite; }
+.cloud-d { animation: cloud-d 32s ease-in-out infinite; }
+
+/* Moon gentle pulse */
+@keyframes moon-glow {
+  0%, 100% { opacity: 0.85; filter: blur(18px); }
+  50%       { opacity: 1;    filter: blur(22px); }
+}
+.moon-halo { animation: moon-glow 6s ease-in-out infinite; }
+
+/* Sun rays spin */
+@keyframes sun-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes sun-pulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.06); }
+}
+.sun-rays  { animation: sun-spin  24s linear infinite; }
+.sun-glow  { animation: sun-pulse  4s ease-in-out infinite; }
+
+/* Day sky clouds — brighter, puffier */
+@keyframes day-cloud-a {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(50px); }
+  100% { transform: translateX(0); }
+}
+@keyframes day-cloud-b {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-60px); }
+  100% { transform: translateX(0); }
+}
+.day-cloud-a { animation: day-cloud-a 30s ease-in-out infinite; }
+.day-cloud-b { animation: day-cloud-b 38s ease-in-out infinite; }
